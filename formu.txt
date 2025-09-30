@@ -1,0 +1,15 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.querySelector('form');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', (event) => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === '' || password === '') {
+                alert('Por favor, preencha todos os campos!');
+                event.preventDefault(); // Impede o envio do formulário
+            }
+        });
+    }
+});

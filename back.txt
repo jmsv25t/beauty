@@ -1,0 +1,43 @@
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+# Simulação de um banco de dados
+usuarios = {
+    'cliente1': {'senha': 'senha123', 'tipo': 'cliente'},
+    'funcionario1': {'senha': 'senha456', 'tipo': 'funcionario'},
+    'admin1': {'senha': 'senha789', 'tipo': 'admin'}
+}
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username in usuarios and usuarios[username]['senha'] == password:
+            tipo_usuario = usuarios[username]['tipo']
+            if tipo_usuario == 'cliente':
+                return redirect(url_for('cliente_pagina'))
+            elif tipo_usuario == 'funcionario':
+                return redirect(url_for('funcionario_pagina'))
+            elif tipo_usuario == 'admin':
+                return redirect(url_for('admin_pagina'))
+        else:
+            return "Usuário ou senha inválidos. <a href='/login'>Tentar novamente</a>"
+    return render_template('login.html')
+
+@app.route('/cliente')
+def cliente_pagina():
+    return "Bem-vindo, cliente! Sua página de agendamento aqui."
+
+@app.route('/funcionario')
+def funcionario_pagina():
+    return "Bem-vindo, funcionário! Sua agenda aqui."
+
+@app.route('/admin')
+def admin_pagina():
+    return "Bem-vindo, administrador! Seu painel de controle aqui."
+
+if __name__ == '__main__':
+    app.run(debug=True)
