@@ -1,68 +1,216 @@
-/* Estilos gerais */
+/*
+  ===================================================================
+  Estilos CSS para Salão de Beleza - SPALAB (Inspirado na imagem)
+  Cores: Preto (#000000) e Prata/Cinza Claro (#C0C0C0 / #F5F5F5)
+  Fonte: Serif Bold (usando 'Georgia' como fallback)
+  ===================================================================
+*/
+
+/* 1. VARIÁVEIS DE COR E TEMA */
+
+:root {
+    /* Cores de Base para o Tema Claro (Padrão) */
+    --cor-fundo-principal: #F5F5F5; /* Cinza claro / Prata */
+    --cor-texto-principal: #000000;
+    --cor-destaque: #36454F; /* Cinza chumbo/Prata escuro para links e botões */
+    --cor-detalhe-secundario: #C0C0C0; /* Prata para bordas e linhas */
+    --cor-fundo-cabecalho: #FFFFFF;
+    --cor-botoes-fundo: #000000;
+    --cor-botoes-texto: #FFFFFF;
+
+    /* Configuração de Fonte */
+    --fonte-principal: 'Georgia', 'Times New Roman', Times, serif;
+    --peso-fonte-bold: bold;
+    --borda-raio-padrao: 8px; /* Arredondamento padrão */
+}
+
+/* 2. TEMA ESCURO (Dark Mode) - Classe aplicada ao <body> */
+body.tema-escuro {
+    --cor-fundo-principal: #000000;
+    --cor-texto-principal: #F5F5F5;
+    --cor-destaque: #C0C0C0;
+    --cor-detalhe-secundario: #36454F;
+    --cor-fundo-cabecalho: #1A1A1A;
+    --cor-botoes-fundo: #C0C0C0;
+    --cor-botoes-texto: #000000;
+}
+
+
+/* 3. ESTILOS GLOBAIS E TIPOGRAFIA */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-principal);
+    transition: background-color 0.5s, color 0.5s; /* Transição suave de tema */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--peso-fonte-bold);
+    color: var(--cor-texto-principal);
+}
+
+/* Título de Seção (como 'Welcome to Your Spa Lab' na imagem) */
+.secao-titulo {
+    font-size: 2.5em;
+    text-align: center;
+    padding: 40px 0 20px 0;
+    font-weight: var(--peso-fonte-bold);
+}
+
+/* 4. CABEÇALHO E NAVEGAÇÃO (Semelhante ao topo da imagem) */
+.cabecalho-principal {
+    background-color: var(--cor-fundo-cabecalho);
+    border-bottom: 1px solid var(--cor-detalhe-secundario);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: var(--peso-fonte-bold);
+}
+
+.menu-navegacao ul {
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    width: 100%;
+.menu-navegacao li {
+    margin-left: 20px;
 }
 
-.container {
-    background-color: #fff;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    margin-top: 20px;
+.menu-navegacao a {
+    text-decoration: none;
+    color: var(--cor-texto-principal);
+    font-weight: var(--peso-fonte-bold);
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
 }
 
-/* Estilos do formulário */
-form {
+.menu-navegacao a:hover,
+.menu-navegacao a.ativo {
+    color: var(--cor-botoes-fundo); /* No tema escuro, a cor de destaque será a prata */
+    background-color: var(--cor-botoes-texto); /* Inverso do botão para hover */
+    border-radius: var(--borda-raio-padrao);
+}
+
+
+/* 5. SEÇÃO DE DESTAQUE/BANNER (Estilizando a seção "Spa Lab Features") */
+.secao-destaque {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    padding: 50px 5%;
+    background: linear-gradient(to right, var(--cor-fundo-principal) 60%, var(--cor-detalhe-secundario) 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-label {
-    text-align: left;
-    font-weight: bold;
+.conteudo-destaque {
+    width: 50%;
+    z-index: 1;
 }
 
-input[type="email"],
-input[type="password"],
-input[type="text"],
-select {
+.imagem-destaque img {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+    height: auto;
+    display: block;
+    border-radius: var(--borda-raio-padrao);
 }
 
-button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 12px;
+/* 6. ESTILOS DE BOTÕES ARREDONDADOS E "BLOB" */
+
+/* Botão Padrão */
+.botao-padrao {
+    background-color: var(--cor-botoes-fundo);
+    color: var(--cor-botoes-texto);
+    padding: 12px 25px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    text-decoration: none;
+    font-weight: var(--peso-fonte-bold);
+    transition: background-color 0.3s, border-radius 0.4s;
 }
 
-button:hover {
-    background-color: #4cae4c;
+/* Botão Arredondado (Padrão) */
+.botao-arredondado {
+    border-radius: 50px; /* Alto arredondamento */
+}
+
+/* Estilo "Blob" - Adiciona um efeito mais orgânico/chique */
+.botao-blob {
+    /* Uma variação de border-radius que simula um blob */
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-animacao 10s infinite;
+}
+
+.botao-blob:hover {
+    /* Mudança sutil de forma no hover */
+    border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+    background-color: var(--cor-destaque);
+}
+
+/* Animação para o efeito blob */
+@keyframes blob-animacao {
+    0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+}
+
+
+/* 7. ESTILOS DOS ITENS DE CARACTERÍSTICAS (Baseado nos ícones vermelhos da imagem) */
+.lista-caracteristicas {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.lista-caracteristicas li {
+    width: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.icone-caracteristica {
+    /* Ícone simulado com a cor de destaque (Prata/Preto) */
+    width: 40px;
+    height: 40px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo-principal); /* Cor do texto/ícone dentro do círculo */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.2em;
+    font-weight: var(--peso-fonte-bold);
+}
+
+.icone-caracteristica::before {
+    content: '✓'; /* Substitua por um ícone real (ex: Font Awesome) */
+}
+
+/* 8. RODAPÉ */
+.rodape-principal {
+    background-color: var(--cor-fundo-cabecalho); /* Usando a cor do cabeçalho */
+    color: var(--cor-texto-principal);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    border-top: 1px solid var(--cor-detalhe-secundario);
 }
