@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Wave - Cadastro</title>
+    <title>Salão de Beleza - Cadastro</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="tema-claro">
-    <header class="cabecalho-principal">
-        <div class="logo"><a href="#">Beauty Wave</a></div>
-        <nav class="menu-navegacao">
-            <ul>
-                <li><a href="login.html">LOGIN</a></li>
-                <li><a href="register.html" class="ativo">CADASTRO</a></li>
-            </ul>
-        </nav>
-        <button id="toggle-theme" class="botao-padrao botao-arredondado">Modo Escuro</button>
+<body>
+    <header>
+        <h1>Cadastre-se</h1>
     </header>
     <main class="container">
         <h2>Criar Nova Conta</h2>
-        <form id="registerForm">
+        <form id="cadastroForm">
             <label for="nome">Nome Completo:</label>
             <input type="text" id="nome" name="nome" required>
             <label for="email">E-mail:</label>
@@ -31,12 +24,10 @@
             
             <input type="hidden" name="role" value="client">
 
-            <div id="message" class="mensagem-erro"></div>
-            <button type="submit" class="botao-padrao botao-arredondado">Cadastrar Cliente</button>
+            <button type="submit">Cadastrar</button>
         </form>
-        <p style="text-align: center; margin-top: 15px;">Já tem uma conta? <a href="login.html">Faça login</a></p>
+        <p>Já tem uma conta? <a href="index.html">Faça login</a></p>
     </main>
-    <script src="register.js"></script> <script src="theme-toggle.js"></script>
+    <script src="cadastro.js"></script>
 </body>
 </html>
-
